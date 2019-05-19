@@ -12,6 +12,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: Colors.black,
+        primaryIconTheme: IconThemeData(color: Colors.black),
+          primaryTextTheme: TextTheme(
+              title: TextStyle(color: Colors.black, fontFamily: "Aveny")),
+          textTheme: TextTheme(title: TextStyle(color: Colors.black))
       ),
       home: new TodoHome(),
     );
