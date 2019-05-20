@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:todo_flutter/domain/todo_hub.dart';
+import 'package:todo_flutter/entity/todo_hub.dart';
 
 class TodoBody extends StatelessWidget {
-  TodoHub todoHub;  
+  final TodoHub todoHub;  
 
-  TodoBody(todoHub) {
-    this.todoHub = todoHub;
-  }
+  TodoBody(this.todoHub);
 
   @override 
   Widget build(BuildContext context) {

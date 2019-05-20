@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/ui/body.dart';
-import 'package:todo_flutter/domain/todo_hub.dart';
+import 'package:todo_flutter/entity/todo_hub.dart';
 
 class TodoHome extends StatefulWidget {
 
