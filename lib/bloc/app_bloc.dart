@@ -19,6 +19,10 @@ class AppBloc {
     );
   }
 
+  void backTodoListPage(context) {
+    Navigator.pop(context);
+  }
+
   fetchTodos() async {
     List<Todo> todoList = await _api.fetchTodoList();
     _todoList.sink.add(_todoList.value + todoList);

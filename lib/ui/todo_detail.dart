@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
+import 'package:todo_flutter/bloc/app_bloc.dart';
 
 class TodoDetailView extends StatelessWidget {
   final Todo todo;
@@ -12,9 +13,17 @@ class TodoDetailView extends StatelessWidget {
         backgroundColor: new Color(0xfff8faf8),
         centerTitle: true,
         elevation: 1.0,
-        leading: new Icon(Icons.arrow_back),
+        leading: new IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            appBloc.backTodoListPage(context);
+          },
+        ),
         title: Text(todo.title)),
-      body: Text(todo.description),
+      body: Container(
+        margin: const EdgeInsets.all(22.0),
+        child: Text(todo.description),
+      )
     );
   } 
 }
