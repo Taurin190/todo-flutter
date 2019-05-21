@@ -19,10 +19,9 @@ class TodoBody extends StatelessWidget {
           appBloc.fetchTodos();
           return Center(child: CircularProgressIndicator());
         }
-        return GridView.builder(
+        return ListView.builder(
           key: PageStorageKey("todoListView"),
           itemCount: todoList.length + 2,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (context, int index) {
             int len = todoList.length;
             if (index == len) {

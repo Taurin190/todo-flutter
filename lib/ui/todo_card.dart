@@ -7,12 +7,38 @@ class TodoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(child: Column(
-      children: <Widget>[
-        Text(todo.title),
-        Text(todo.description),
+    return Card(
+      margin: const EdgeInsets.all(5.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: const EdgeInsets.all(10.0),
+                  child: Text(
+                    todo.title,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 20.0)
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.only(
+                    left: 10.0,
+                    right: 10.0,
+                    bottom: 15.0
+                  ),
+                  child: Text(todo.description),
+                ),
+          ],
+        ),
+      ),
       ],
-    ),
+      ),
     );
   }
 }
