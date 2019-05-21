@@ -5,7 +5,7 @@ class TodoHub {
 class Todo {
   int id;
   String title;
-  String discription;
+  String description;
 
   static fromJsonList(Map<String, dynamic> parsedJson) {
     dynamic todoJsonList = parsedJson['results'];
@@ -15,6 +15,6 @@ class Todo {
   Todo(dynamic result) {
     id = result['id'];
     title = result['title'];
-    discription = result['discription'];
+    description = result['description'];
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
+import 'package:todo_flutter/ui/todo_card.dart';
 
 class TodoBody extends StatelessWidget {
   final List<Todo> todoList;
@@ -29,7 +30,7 @@ class TodoBody extends StatelessWidget {
             }
             return GestureDetector(
               onTap: () => appBloc.openTodoDetailPage(context, todoList[index]),
-              child: Text(todoList[index].title),
+              child: TodoCard(todoList[index]),
             );
           },
         );
