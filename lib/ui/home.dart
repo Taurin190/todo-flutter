@@ -13,6 +13,7 @@ class TodoHome extends StatefulWidget {
 
 class ToDoHomeState extends State<TodoHome> {
   TodoHub todoHub;
+  List<Todo> todoList;
 
   final topBar = new AppBar(
     backgroundColor: new Color(0xfff8faf8),
@@ -37,7 +38,7 @@ class ToDoHomeState extends State<TodoHome> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: topBar,
-      body: new TodoBody(todoHub),
+      body: new TodoBody(todoList),
       floatingActionButton: FloatingActionButton(
         onPressed: null,
         tooltip: "Create new TODO",
