@@ -3,6 +3,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:todo_flutter/api/todo_api.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:todo_flutter/ui/todo_detail.dart';
+import 'package:todo_flutter/ui/todo_creation.dart';
 
 class AppBloc {
   final _api = TodoApi();
@@ -19,7 +20,16 @@ class AppBloc {
     );
   }
 
-  void backTodoListPage(context) {
+  void openTodoCreationPage(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TodoCreation(),
+      )
+    );
+  }
+
+  void returnPage(context) {
     Navigator.pop(context);
   }
 

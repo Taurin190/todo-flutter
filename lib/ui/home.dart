@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/ui/body.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
+import 'package:todo_flutter/bloc/app_bloc.dart';
+
 
 class TodoHome extends StatefulWidget {
 
@@ -40,7 +42,7 @@ class ToDoHomeState extends State<TodoHome> {
       appBar: topBar,
       body: new TodoBody(todoList),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () => appBloc.openTodoCreationPage(context),
         tooltip: "Create new TODO",
         child: Icon(Icons.add),
       ),
