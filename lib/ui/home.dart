@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_flutter/ui/body.dart';
+import 'package:todo_flutter/ui/todo_list.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
 
@@ -40,7 +40,7 @@ class ToDoHomeState extends State<TodoHome> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: topBar,
-      body: new TodoBody(todoList),
+      body: new TodoListView(todoList),
       floatingActionButton: FloatingActionButton(
         onPressed: () => appBloc.openTodoCreationPage(context),
         tooltip: "Create new TODO",

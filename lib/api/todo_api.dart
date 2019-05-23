@@ -15,4 +15,12 @@ class TodoApi {
       );
     }
   }
+
+  Future<bool> createTodo(Todo todo) async {
+    return true;
+  }
+
+  Future<bool> closeTodo(int id) async {
+    return true;
+  } 
 }
