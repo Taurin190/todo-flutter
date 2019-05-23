@@ -17,11 +17,18 @@ class TodoListView extends StatelessWidget {
         List<Todo> todoList = snapshot.data;
         if (todoList.length == 0) {
           appBloc.fetchTodos();
-          return Center(child: CircularProgressIndicator());
+          return Center(
+            child:Text(
+              "No ToDo",
+              style: TextStyle(
+                  fontSize: 20.0,
+                ),
+            )
+          );
         }
         return ListView.builder(
           key: PageStorageKey("todoListView"),
-          itemCount: todoList.length + 2,
+          itemCount: todoList.length,
           itemBuilder: (context, int index) {
             int len = todoList.length;
             if (index == len) {

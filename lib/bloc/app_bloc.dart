@@ -35,7 +35,21 @@ class AppBloc {
 
   fetchTodos() async {
     List<Todo> todoList = await _api.fetchTodoList();
+    if (_todoList.value == null) {
+      _todoList.value = [];
+    }
+    if (_todoList.value.length > 0) {
+      _todoList.value = [];
+    }
     _todoList.sink.add(_todoList.value + todoList);
+  }
+
+  createTodo(Todo todo) async {
+
+  }
+
+  closeTodo(int id) async {
+
   }
 
   dispose() {
