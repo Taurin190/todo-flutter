@@ -20,10 +20,28 @@ class TodoDetailView extends StatelessWidget {
           },
         ),
         title: Text(todo.title)),
-      body: Container(
-        margin: const EdgeInsets.all(22.0),
-        child: Text(todo.description),
-      )
+      body: Column(
+        children: <Widget>[
+          Container(
+            alignment: Alignment.centerLeft,
+            margin: const EdgeInsets.all(22.0),
+            child:Text(
+                todo.description,
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+              ),
+            
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: RaisedButton(
+              onPressed: null,
+              child: Text("DONE"),
+            ),
+          ),
+        ],
+      ),
     );
   } 
 }
