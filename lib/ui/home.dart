@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/ui/todo_list.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
-
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 
 class TodoHome extends StatefulWidget {
+  final FirebaseAnalytics analytics;
+  final FirebaseAnalyticsObserver observer;
+  TodoHome({Key key, this.analytics, this.observer})
+      : super(key: key);
 
   @override
   ToDoHomeState createState() {
-    return new ToDoHomeState();
+    return new ToDoHomeState(analytics, observer);
   }
 }
 
@@ -16,7 +21,12 @@ class TodoHome extends StatefulWidget {
 class ToDoHomeState extends State<TodoHome> {
   TodoHub todoHub;
   List<Todo> todoList;
+  final FirebaseAnalyticsObserver observer;
+  final FirebaseAnalytics analytics;
+  String _message = '';
 
+  ToDoHomeState(this.analytics, this.observer);
+  
   final topBar = new AppBar(
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: true,
@@ -47,5 +57,25 @@ class ToDoHomeState extends State<TodoHome> {
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  void setMessage(String message) {
+    setState(() {
+      _message = message;
+    });
+  }
+
+  Future<void> _sendAnalyticsEvent() async {
+    await analytics.logEvent(
+      name: 'test_event',
+      parameters: <String, dynamic>{
+        'string': 'string',
+        'int': 42,
+        'long': 12345678910,
+        'double': 42.0,
+        'bool': true,
+      },
+    );
+    setMessage('logEvent succeeded');
   }
 }
