@@ -23,7 +23,6 @@ class ToDoHomeState extends State<TodoHome> {
   List<Todo> todoList;
   final FirebaseAnalyticsObserver observer;
   final FirebaseAnalytics analytics;
-  String _message = '';
 
   ToDoHomeState(this.analytics, this.observer);
   
@@ -57,25 +56,5 @@ class ToDoHomeState extends State<TodoHome> {
         child: Icon(Icons.add),
       ),
     );
-  }
-
-  void setMessage(String message) {
-    setState(() {
-      _message = message;
-    });
-  }
-
-  Future<void> _sendAnalyticsEvent() async {
-    await analytics.logEvent(
-      name: 'test_event',
-      parameters: <String, dynamic>{
-        'string': 'string',
-        'int': 42,
-        'long': 12345678910,
-        'double': 42.0,
-        'bool': true,
-      },
-    );
-    setMessage('logEvent succeeded');
   }
 }

@@ -8,6 +8,42 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:957499972850:android:86a2938a5ebfe8a9",
+        "android_client_info": {
+          "package_name": "com.example.todo_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "957499972850-hnlkb9as17tddcgei883vn9hddog45p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrSwsAE-epaVAq1AHKBWXpYS2bQa0YT8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "957499972850-hnlkb9as17tddcgei883vn9hddog45p1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "957499972850-2ug84ej70lh1m100kva129kmuvl406mt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "todoflutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:957499972850:android:1dc229a2f4399c41",
         "android_client_info": {
           "package_name": "com.todo"

@@ -22,7 +22,11 @@ class MyApp extends StatelessWidget {
               title: TextStyle(color: Colors.black, fontFamily: "Aveny")),
           textTheme: TextTheme(title: TextStyle(color: Colors.black))
       ),
-      home: new TodoHome(),
+      home: new TodoHome(
+        analytics: analytics,
+        observer: observer,
+      ),
+      navigatorObservers: <NavigatorObserver>[observer],
     );
   }
 }
