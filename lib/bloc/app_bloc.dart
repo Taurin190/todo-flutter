@@ -7,7 +7,7 @@ import 'package:todo_flutter/ui/todo_creation.dart';
 
 class AppBloc {
   final _api = TodoApi();
-  final _todoList = BehaviorSubject<List<Todo>>(seedValue: []);
+  final _todoList = BehaviorSubject<List<Todo>>(seedValue: null);
   ValueObservable<List<Todo>> get todoList => _todoList.stream;
 
 
@@ -35,6 +35,7 @@ class AppBloc {
 
   fetchTodos() async {
     List<Todo> todoList = await _api.fetchTodoList();
+    print(todoList);
     if (_todoList.value == null) {
       _todoList.value = [];
     }
@@ -44,8 +45,9 @@ class AppBloc {
     _todoList.sink.add(_todoList.value + todoList);
   }
 
-  createTodo(Todo todo) async {
-
+   createTodo(String title, String description) async {
+    Todo todo = Todo.fromForm(title, description);
+    _api.createTodo(todo);
   }
 
   closeTodo(int id) async {

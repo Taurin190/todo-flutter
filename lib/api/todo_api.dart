@@ -14,15 +14,21 @@ class TodoApi {
         json.decode(await rootBundle.loadString("assets/data.json"))
       );
     }
-    _reference.once().then((DataSnapshot d){
-      print('Firebase Event Snapshot: ${d.value}');
+    DataSnapshot d = await _reference.once();
+    if (d.value == null) {
       return [];
-    });
+    }
     return [];
   }
 
-  Future<bool> createTodo(Todo todo) async {
-    return true;
+  void createTodo(Todo todo) async {
+    print("Create TODO");
+    var newPostRef = _reference.child("todo").push();
+    newPostRef.set({
+      'title': todo.title,
+      'description': todo.description,
+    });
+    // return true;
   }
 
   Future<bool> closeTodo(int id) async {

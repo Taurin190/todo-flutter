@@ -15,8 +15,13 @@ class TodoListView extends StatelessWidget {
       initialData: appBloc.todoList.value,
       builder: (context, AsyncSnapshot<List<Todo>> snapshot) {
         List<Todo> todoList = snapshot.data;
-        if (todoList.length == 0) {
+        if (todoList == null) {
           appBloc.fetchTodos();
+          return Center(
+            child:CircularProgressIndicator(),
+          );
+        }
+        if (todoList.length == 0) {
           return Center(
             child:Text(
               "No ToDo",
@@ -25,7 +30,7 @@ class TodoListView extends StatelessWidget {
                 ),
             )
           );
-        }
+        } 
         return ListView.builder(
           key: PageStorageKey("todoListView"),
           itemCount: todoList.length,
