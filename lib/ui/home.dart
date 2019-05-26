@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/ui/todo_list.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
@@ -19,13 +17,11 @@ class TodoHome extends StatefulWidget {
   }
 }
 
-
 class ToDoHomeState extends State<TodoHome> {
   TodoHub todoHub;
   List<Todo> todoList;
   final FirebaseAnalyticsObserver observer;
   final FirebaseAnalytics analytics;
-  StreamSubscription _subscriptionTodo;
 
   ToDoHomeState(this.analytics, this.observer);
   
@@ -33,14 +29,7 @@ class ToDoHomeState extends State<TodoHome> {
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: true,
     elevation: 1.0,
-    leading: new Icon(Icons.camera_alt),
-    title: Text("TODO List"),
-    actions: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(right: 12.0),
-        child: Icon(Icons.share),
-      )
-    ],
+    title: Text("TODO List"),  
   );
 
   @override
