@@ -1,11 +1,15 @@
+import 'package:todo_flutter/util/date.dart';
+
 class TodoHub {
   List<Todo> todoList;
 }
 
 class Todo {
-  int id;
+  String get key => _key;
   String get title => _title;
   String get description => _description;
+  String createdAt;
+  String _key;
   String _title;
   String _description;
 
@@ -18,8 +22,12 @@ class Todo {
     // id = result['id'];
     title = result['title'];
     description = result['description'];
+    createdAt = result['createdAt'];
   }
 
+  set key(String inputKey) {
+    _key = inputKey;
+  }
   set title(String inputTitle) {
     _title = inputTitle;
   }
@@ -29,7 +37,11 @@ class Todo {
   }
 
   static Todo fromForm(String inputTitle, String inputDescription) {
-    Todo todo = Todo({'title': inputTitle, 'description':inputDescription});
+    Todo todo = Todo({
+      'title': inputTitle, 
+      'description':inputDescription,
+      'createdAt': DateUtil.getCurrentDatetime(),
+    });
     return todo;
   }
 }

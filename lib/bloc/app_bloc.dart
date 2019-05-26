@@ -50,8 +50,8 @@ class AppBloc {
     _api.createTodo(todo);
   }
 
-  closeTodo(int id) async {
-
+  closeTodo(String key) async {
+    _api.closeTodo(key);
   }
 
   dispose() {
