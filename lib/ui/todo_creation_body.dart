@@ -27,7 +27,10 @@ class TodoCreationBody extends StatelessWidget {
         ),
         Container(
           child: RaisedButton(
-            onPressed: () => appBloc.createTodo(_titleController.text, _descriptionController.text),
+            onPressed: () => appBloc.createTodo(_titleController.text, _descriptionController.text,
+            (data){
+              appBloc.returnPage(context);
+            }),
             child: Text("CREATE"),
           ),
         ),

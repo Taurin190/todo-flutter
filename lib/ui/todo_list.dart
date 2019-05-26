@@ -17,6 +17,7 @@ class TodoListView extends StatelessWidget {
         List<Todo> todoList = snapshot.data;
         if (todoList == null) {
           appBloc.fetchTodos();
+          appBloc.listenTodos();
           return Center(
             child:CircularProgressIndicator(),
           );

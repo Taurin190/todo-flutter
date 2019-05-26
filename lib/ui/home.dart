@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/ui/todo_list.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
@@ -23,6 +25,7 @@ class ToDoHomeState extends State<TodoHome> {
   List<Todo> todoList;
   final FirebaseAnalyticsObserver observer;
   final FirebaseAnalytics analytics;
+  StreamSubscription _subscriptionTodo;
 
   ToDoHomeState(this.analytics, this.observer);
   
@@ -42,8 +45,8 @@ class ToDoHomeState extends State<TodoHome> {
 
   @override
   void initState() {
+    appBloc.listenTodos();
     super.initState();
-
   }
   @override
   Widget build(BuildContext context) {

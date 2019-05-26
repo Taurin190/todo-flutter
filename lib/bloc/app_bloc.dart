@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:todo_flutter/api/todo_api.dart';
@@ -9,6 +10,7 @@ class AppBloc {
   final _api = TodoApi();
   final _todoList = BehaviorSubject<List<Todo>>(seedValue: null);
   ValueObservable<List<Todo>> get todoList => _todoList.stream;
+  // StreamController<> streamController = new StreamController.broadcast();
 
 
   void openTodoDetailPage(context, Todo todo) {
@@ -45,13 +47,23 @@ class AppBloc {
     _todoList.sink.add(_todoList.value + todoList);
   }
 
-   createTodo(String title, String description) async {
-    Todo todo = Todo.fromForm(title, description);
-    _api.createTodo(todo);
+  listenTodos() async {
+    print("listen");
+    _api.listenTodoList((list){
+      _todoList.value = [];
+      _todoList.sink.add(_todoList.value + list);
+    });
   }
 
-  closeTodo(String key) async {
-    _api.closeTodo(key);
+   createTodo(String title, String description, void afterCreated(data)) async {
+    Todo todo = Todo.fromForm(title, description);
+    _api.createTodo(todo).then(afterCreated);
+    fetchTodos();
+  }
+
+  closeTodo(String key, void afterClosed(data)) async {
+    _api.closeTodo(key).then(afterClosed);
+    fetchTodos();
   }
 
   dispose() {

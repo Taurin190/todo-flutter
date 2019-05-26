@@ -36,7 +36,9 @@ class TodoDetailView extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: RaisedButton(
-              onPressed: appBloc.closeTodo(todo.key),
+              onPressed: () => appBloc.closeTodo(todo.key,(data){
+                appBloc.returnPage(context);
+              }),
               child: Text("DONE"),
             ),
           ),

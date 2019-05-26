@@ -36,23 +36,35 @@ class TodoApi {
     return todoList;
   }
 
-  void listenTodoList(void onChange(Event event)) {
-    _reference.child("todo").onChildChanged.listen((data){onChange(data);});
+  void listenTodoList(void onChange(List<Todo> list)) {
+    _reference.child("todo").onChildChanged.listen((data){
+      List<Todo> todoList = [];
+      DataSnapshot d = data.snapshot;
+      d.value.forEach((key, value){
+        Todo todo = new Todo({
+          'title': value['title'],
+          'description': value['description'],
+          'createAt': value['createAt']
+        });
+        todo.key = key;
+        todoList.add(todo);
+      });
+      onChange(todoList);
+    });
   }
 
-  void createTodo(Todo todo) async {
+  Future<void> createTodo(Todo todo) async {
     print("Create TODO");
     var newPostRef = _reference.child("todo").push();
-    newPostRef.set({
+    return newPostRef.set({
       'title': todo.title,
       'description': todo.description,
       'createAt': todo.createdAt, 
     });
-    // return true;
   }
 
-  void closeTodo(String key) async {
+  Future<void> closeTodo(String key) async {
     print("Delete TODO");
-    _reference.child("todo").child(key).remove();
+    return _reference.child("todo").child(key).remove();
   } 
 }
