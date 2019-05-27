@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:todo_flutter/ui/todo_card.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
+import 'package:todo_flutter/bloc/todo_bloc.dart';
 
 class TodoListView extends StatelessWidget {
   final List<Todo> todoList;
@@ -11,13 +12,12 @@ class TodoListView extends StatelessWidget {
   @override 
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: appBloc.todoList,
-      initialData: appBloc.todoList.value,
+      stream: todoBloc.todoList,
+      initialData: todoBloc.todoList.value,
       builder: (context, AsyncSnapshot<List<Todo>> snapshot) {
         List<Todo> todoList = snapshot.data;
         if (todoList == null) {
-          appBloc.fetchTodos();
-          appBloc.listenTodos();
+          todoBloc.fetchTodos();
           return Center(
             child:CircularProgressIndicator(),
           );
@@ -38,7 +38,7 @@ class TodoListView extends StatelessWidget {
           itemBuilder: (context, int index) {
             int len = todoList.length;
             if (index == len) {
-              appBloc.fetchTodos();
+              todoBloc.fetchTodos();
             }
             return GestureDetector(
               onTap: () => appBloc.openTodoDetailPage(context, todoList[index]),

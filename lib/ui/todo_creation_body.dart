@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
+import 'package:todo_flutter/bloc/todo_bloc.dart';
 
 class TodoCreationBody extends StatelessWidget {
   final _titleController = TextEditingController();
@@ -27,7 +28,7 @@ class TodoCreationBody extends StatelessWidget {
         ),
         Container(
           child: RaisedButton(
-            onPressed: () => appBloc.createTodo(_titleController.text, _descriptionController.text,
+            onPressed: () => todoBloc.createTodo(_titleController.text, _descriptionController.text,
             (data){
               appBloc.returnPage(context);
             }),

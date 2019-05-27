@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/ui/todo_list.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
+import 'package:todo_flutter/bloc/todo_bloc.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 
@@ -34,7 +35,7 @@ class ToDoHomeState extends State<TodoHome> {
 
   @override
   void initState() {
-    appBloc.listenTodos();
+    todoBloc.listenTodos();
     super.initState();
   }
   @override

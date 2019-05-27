@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
+import 'package:todo_flutter/bloc/todo_bloc.dart';
 
 class TodoDetailView extends StatelessWidget {
   final Todo todo;
@@ -36,7 +37,7 @@ class TodoDetailView extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: RaisedButton(
-              onPressed: () => appBloc.closeTodo(todo.key,(data){
+              onPressed: () => todoBloc.closeTodo(todo.key,(data){
                 appBloc.returnPage(context);
               }),
               child: Text("DONE"),
