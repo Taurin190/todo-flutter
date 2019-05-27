@@ -1,16 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/material.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class TodoApi {
   static const bool Debug = false;
   final _reference = FirebaseDatabase.instance.reference();
-  // VoidCallback _onDateChange;
-
+  
   Future<List<Todo>> fetchTodoList() async {
     if (Debug) {
       return Todo.fromJsonList(
