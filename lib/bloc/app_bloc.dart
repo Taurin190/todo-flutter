@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
 import 'package:todo_flutter/ui/todo_detail.dart';
 import 'package:todo_flutter/ui/todo_creation.dart';
+import 'package:todo_flutter/ui/login.dart';
+import 'package:todo_flutter/ui/home.dart';
 
 class AppBloc {
   void openTodoDetailPage(context, Todo todo) {
@@ -18,6 +20,24 @@ class AppBloc {
       context,
       MaterialPageRoute(
         builder: (context) => TodoCreation(),
+      )
+    );
+  }
+
+  void gotoLoginPage(context) {
+    Navigator.pushReplacement(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => LoginPage(),
+      )
+    );
+  }
+
+  void gotoTodoListPage(context) {
+    Navigator.pushReplacement(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => TodoHome(),
       )
     );
   }
