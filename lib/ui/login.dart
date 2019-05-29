@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: new Color(0xfff8faf8),
         centerTitle: true,
         elevation: 1.0,
-        title: Text("Login")
+        title: Text("Login"),
       ),
       body: Column(
         children: <Widget> [
@@ -35,7 +35,14 @@ class LoginPage extends StatelessWidget {
           ),
           Container(
             child: RaisedButton(
-              onPressed: null,
+              onPressed: () => authBloc.login(
+                _usernameController.text, 
+                _passwordController.text, 
+                (){
+                  appBloc.gotoTodoListPage(context);
+                }, 
+                (){},
+              ),
               child: Text("Login"),
             ),
           ),

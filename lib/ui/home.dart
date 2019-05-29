@@ -30,7 +30,7 @@ class ToDoHomeState extends State<TodoHome> {
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: true,
     elevation: 1.0,
-    title: Text("TODO List"),  
+    title: Text("TODO List"),
   );
 
   @override
@@ -42,7 +42,7 @@ class ToDoHomeState extends State<TodoHome> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: topBar,
-      body: new TodoListView(todoList),
+      body: TodoListView(todoList),
       floatingActionButton: FloatingActionButton(
         onPressed: () => appBloc.openTodoCreationPage(context),
         tooltip: "Create new TODO",
