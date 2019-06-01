@@ -39,13 +39,17 @@ class ToDoHomeState extends State<TodoHome> {
           return [
             PopupMenuItem(
               value: 1,
-              child: FlatButton(
-                child: Text("Logout"),
-                onPressed: () {
-                  authBloc.logout();
-                  appBloc.gotoLoginPage(context);
-                },
-              ),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: FlatButton(  
+                  child: Text("Logout"),
+                  onPressed: () {
+                    authBloc.logout();
+                    appBloc.gotoLoginPage(context);
+                  },
+                ),
+              )
             )
           ];
         },
