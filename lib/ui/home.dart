@@ -43,6 +43,18 @@ class ToDoHomeState extends State<TodoHome> {
                 width: double.infinity,
                 height: double.infinity,
                 child: FlatButton(  
+                  child: Text("Profile"),
+                  onPressed: () {
+                  },
+                ),
+              )
+            ),
+            PopupMenuItem(
+              value: 2,
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: FlatButton(  
                   child: Text("Logout"),
                   onPressed: () {
                     authBloc.logout();
@@ -50,7 +62,7 @@ class ToDoHomeState extends State<TodoHome> {
                   },
                 ),
               )
-            )
+            ),
           ];
         },
       )
