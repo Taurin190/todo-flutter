@@ -25,11 +25,12 @@ class AppBloc {
   }
 
   void gotoLoginPage(context) {
-    Navigator.pushReplacement(
+    Navigator.pushAndRemoveUntil(
       context, 
       MaterialPageRoute(
         builder: (context) => LoginPage(),
-      )
+      ),
+      ModalRoute.withName('/'),
     );
   }
 
