@@ -10,8 +10,11 @@ class Slpash extends StatefulWidget {
 }
 
 class SplashState extends State<Slpash> {
+  bool _isLogin;
+
   @override
   void initState() {
+    _isLogin = authBloc.isLogin();
     super.initState();
   }
 

@@ -4,6 +4,8 @@ import 'package:todo_flutter/ui/todo_detail.dart';
 import 'package:todo_flutter/ui/todo_creation.dart';
 import 'package:todo_flutter/ui/login.dart';
 import 'package:todo_flutter/ui/home.dart';
+import 'package:todo_flutter/ui/sign_up.dart';
+import 'package:todo_flutter/ui/forgot_password.dart';
 
 class AppBloc {
   void openTodoDetailPage(context, Todo todo) {
@@ -31,6 +33,24 @@ class AppBloc {
         builder: (context) => LoginPage(),
       ),
       ModalRoute.withName('/'),
+    );
+  }
+
+  void openSignUpPage(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SignUpPage(),
+      )
+    );
+  }
+
+  void openForgotPasswordPage(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ForgotPassword(),
+      )
     );
   }
 

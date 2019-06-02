@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
 import 'package:todo_flutter/bloc/auth_bloc.dart';
 
-class LoginPage extends StatelessWidget {
+class ForgotPassword extends StatelessWidget {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +55,7 @@ class LoginPage extends StatelessWidget {
           ),
           Container(
             child: FlatButton(
-              onPressed: () => appBloc.openForgotPasswordPage(context),
+              onPressed: null,
               child: Text("Forgot password?"),
             ),
           ),

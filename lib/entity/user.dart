@@ -1,4 +1,4 @@
-class Todo {
+class User {
   var key;
   var displayName;
   var email;

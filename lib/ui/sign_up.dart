@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
 import 'package:todo_flutter/bloc/auth_bloc.dart';
 
-class LoginPage extends StatelessWidget {
+class SignUpPage extends StatelessWidget {
   final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _passwordConfirmController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,13 +14,21 @@ class LoginPage extends StatelessWidget {
         backgroundColor: new Color(0xfff8faf8),
         centerTitle: true,
         elevation: 1.0,
-        title: Text("Login"),
+        title: Text("Sign up"),
       ),
       body: Column(
         children: <Widget> [
           Container(
             child: TextFormField(
               controller: _usernameController,
+              decoration: InputDecoration(
+                labelText: "User name"
+              )
+            ),
+          ),
+          Container(
+            child: TextFormField(
+              controller: _emailController,
               decoration: InputDecoration(
                 labelText: "Email"
               )
@@ -34,6 +44,15 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           Container(
+            child: TextFormField(
+              controller: _passwordConfirmController,
+              decoration: InputDecoration(
+                labelText: "Password Confirmation"
+              ),
+              obscureText: true,
+            ),
+          ),
+          Container(
             child: RaisedButton(
               onPressed: () => authBloc.login(
                 _usernameController.text, 
@@ -43,19 +62,7 @@ class LoginPage extends StatelessWidget {
                 }, 
                 (){},
               ),
-              child: Text("Login"),
-            ),
-          ),
-          Container(
-            child: FlatButton(
-              onPressed: () => appBloc.openSignUpPage(context),
-              child: Text("Create an Account"),
-            ),
-          ),
-          Container(
-            child: FlatButton(
-              onPressed: () => appBloc.openForgotPasswordPage(context),
-              child: Text("Forgot password?"),
+              child: Text("Sign up"),
             ),
           ),
         ],
