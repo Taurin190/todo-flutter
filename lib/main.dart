@@ -4,6 +4,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:todo_flutter/bloc/auth_bloc.dart';
 import 'package:todo_flutter/ui/login.dart';
+import 'package:todo_flutter/ui/splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
               title: TextStyle(color: Colors.black, fontFamily: "Aveny")),
           textTheme: TextTheme(title: TextStyle(color: Colors.black))
       ),
-      home: !authBloc.isLogin() ? LoginPage() : new TodoHome(
+      home: !authBloc.isLogin() ? Slpash() : new TodoHome(
         analytics: analytics,
         observer: observer,
       ),

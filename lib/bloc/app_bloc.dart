@@ -4,6 +4,7 @@ import 'package:todo_flutter/ui/todo_detail.dart';
 import 'package:todo_flutter/ui/todo_creation.dart';
 import 'package:todo_flutter/ui/login.dart';
 import 'package:todo_flutter/ui/home.dart';
+import 'package:todo_flutter/ui/splash.dart';
 import 'package:todo_flutter/ui/sign_up.dart';
 import 'package:todo_flutter/ui/forgot_password.dart';
 
@@ -27,6 +28,14 @@ class AppBloc {
   }
 
   void gotoLoginPage(context) {
+     Navigator.pushReplacement(
+      context, 
+      MaterialPageRoute(
+        builder: (context) => LoginPage(),
+      )
+    );
+  }
+  void returnLoginPage(context) {
     Navigator.pushAndRemoveUntil(
       context, 
       MaterialPageRoute(

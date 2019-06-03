@@ -58,7 +58,7 @@ class ToDoHomeState extends State<TodoHome> {
                   child: Text("Logout"),
                   onPressed: () {
                     authBloc.logout();
-                    appBloc.gotoLoginPage(context);
+                    appBloc.returnLoginPage(context);
                   },
                 ),
               )
