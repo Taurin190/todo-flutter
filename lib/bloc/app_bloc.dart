@@ -4,7 +4,7 @@ import 'package:todo_flutter/ui/todo_detail.dart';
 import 'package:todo_flutter/ui/todo_creation.dart';
 import 'package:todo_flutter/ui/login.dart';
 import 'package:todo_flutter/ui/home.dart';
-import 'package:todo_flutter/ui/splash.dart';
+import 'package:todo_flutter/ui/profile.dart';
 import 'package:todo_flutter/ui/sign_up.dart';
 import 'package:todo_flutter/ui/forgot_password.dart';
 
@@ -50,6 +50,15 @@ class AppBloc {
       context,
       MaterialPageRoute(
         builder: (context) => SignUpPage(),
+      )
+    );
+  }
+
+    void openProfilePage(context, user) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ProfilePage(user),
       )
     );
   }
