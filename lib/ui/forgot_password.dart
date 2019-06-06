@@ -13,7 +13,7 @@ class ForgotPassword extends StatelessWidget {
         backgroundColor: new Color(0xfff8faf8),
         centerTitle: true,
         elevation: 1.0,
-        title: Text("Login"),
+        title: Text("Forgot Password"),
       ),
       body: Column(
         children: <Widget> [
@@ -26,15 +26,6 @@ class ForgotPassword extends StatelessWidget {
             ),
           ),
           Container(
-            child: TextFormField(
-              controller: _passwordController,
-              decoration: InputDecoration(
-                labelText: "Password"
-              ),
-              obscureText: true,
-            ),
-          ),
-          Container(
             child: RaisedButton(
               onPressed: () => authBloc.login(
                 _usernameController.text, 
@@ -44,7 +35,7 @@ class ForgotPassword extends StatelessWidget {
                 }, 
                 (){},
               ),
-              child: Text("Login"),
+              child: Text("Reset Password"),
             ),
           ),
           Container(

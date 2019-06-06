@@ -44,6 +44,7 @@ class ToDoHomeState extends State<TodoHome> {
                 child: FlatButton(  
                   child: Text("Profile"),
                   onPressed: () {
+                    appBloc.returnLoginPage(context);
                   },
                 ),
               )
