@@ -36,20 +36,36 @@ class LoginPage extends StatelessWidget {
           ),
           Container(
             child: RaisedButton(
-              onPressed: () => authBloc.login(
-                _usernameController.text, 
-                _passwordController.text, 
-                (){
-                  appBloc.gotoTodoListPage(context);
-                }, 
-                (){
+              onPressed: () => {
+                if (_usernameController.text == "") {
                   showAlertDialog(
                     context, 
                     "Login Failure",
-                    "ログインに失敗しました。\nメールアドレス、パスワードを確認して下さい。"
-                  );
-                },
-              ),
+                    "メールアドレスが空です。"
+                  )
+                } else if(_passwordController.text == "") {
+                  showAlertDialog(
+                    context, 
+                    "Login Failure",
+                    "パスワードが空です。"
+                  )
+                } else {
+                  authBloc.login(
+                    _usernameController.text, 
+                    _passwordController.text, 
+                    (){
+                      appBloc.gotoTodoListPage(context);
+                    }, 
+                    (){
+                      showAlertDialog(
+                        context, 
+                        "Login Failure",
+                        "ログインに失敗しました。\nメールアドレス、パスワードを確認して下さい。"
+                      );
+                    },
+                  )
+                }
+              },
               child: Text("Login"),
             ),
           ),
