@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_flutter/ui/show_dialog.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
 import 'package:todo_flutter/bloc/auth_bloc.dart';
 
@@ -41,7 +42,13 @@ class LoginPage extends StatelessWidget {
                 (){
                   appBloc.gotoTodoListPage(context);
                 }, 
-                (){},
+                (){
+                  showAlertDialog(
+                    context, 
+                    "Login Failure",
+                    "ログインに失敗しました。\nメールアドレス、パスワードを確認して下さい。"
+                  );
+                },
               ),
               child: Text("Login"),
             ),

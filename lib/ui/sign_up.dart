@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_flutter/ui/show_dialog.dart';
 import 'package:todo_flutter/bloc/app_bloc.dart';
 import 'package:todo_flutter/bloc/auth_bloc.dart';
 
@@ -54,13 +55,19 @@ class SignUpPage extends StatelessWidget {
           ),
           Container(
             child: RaisedButton(
-              onPressed: () => authBloc.login(
+              onPressed: () => authBloc.createUser(
                 _usernameController.text, 
                 _passwordController.text, 
                 (){
                   appBloc.gotoTodoListPage(context);
                 }, 
-                (){},
+                (){
+                  showAlertDialog(
+                    context, 
+                    "Sign Up Failure", 
+                    "ユーザ登録に失敗しました。",
+                  );
+                },
               ),
               child: Text("Sign up"),
             ),

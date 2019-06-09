@@ -8,14 +8,18 @@ class AuthBloc {
   bool _isLogin = false;
 
   login(String username, String password, void onLogin(), void onFailLogin()) async {
-    bool isSuccessLogin = await _api.login(username, password);
-    if (isSuccessLogin) {
-      _isLogin = true;
-      onLogin();
+    try {
+      FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: username, 
+        password: password
+      );
+      print(user);
+    } catch (e) {
+      print(e);
+      onFailLogin();
       return;
     }
-    _isLogin = false;
-    onFailLogin();
+    onLogin();
   }
 
   signIn(String username, String password, void onLogin(), void onFailLogin()) async {
