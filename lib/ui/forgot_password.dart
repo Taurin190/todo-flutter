@@ -29,7 +29,7 @@ class ForgotPassword extends StatelessWidget {
             child: RaisedButton(
               onPressed: () => authBloc.login(
                 _usernameController.text, 
-                _passwordController.text, 
+                _passwordController.text,
                 (){
                   appBloc.gotoTodoListPage(context);
                 }, 

@@ -57,15 +57,17 @@ class SignUpPage extends StatelessWidget {
             child: RaisedButton(
               onPressed: () => authBloc.createUser(
                 _usernameController.text, 
-                _passwordController.text, 
+                _emailController.text,
+                _passwordController.text,
+                _passwordConfirmController.text,
                 (){
                   appBloc.gotoTodoListPage(context);
                 }, 
-                (){
+                (errMessage){
                   showAlertDialog(
                     context, 
                     "Sign Up Failure", 
-                    "ユーザ登録に失敗しました。",
+                    errMessage,
                   );
                 },
               ),

@@ -10,7 +10,11 @@ class AuthBloc {
 
   User _user = null;
 
-  login(String username, String password, void onLogin(), void onFailLogin()) async {
+  login(
+    String username, String password,
+    void onLogin(), 
+    void onFailLogin()
+  ) async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: username, 
@@ -32,7 +36,23 @@ class AuthBloc {
     FirebaseUser user = await FirebaseAuth.instance.signInWithEmailAndPassword(email: username, password: password);
   }
 
-  createUser(String username, String password, void onLogin(), void onFailLogin()) async {
+  createUser(
+    String username, 
+    String email, 
+    String password,
+    String passwordConfirm,  
+    void onLogin(), 
+    void onFailLogin(String errMessage)
+  ) async {
+    if (username.isEmpty || email.isEmpty || password.isEmpty || passwordConfirm.isEmpty) {
+      onFailLogin("Necessary form is not filled");
+      return;
+    }
+
+    if (password != passwordConfirm) {
+      onFailLogin("Password doesn\'t matched");
+      return;
+    }
     FirebaseUser user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: username, password: password);
   }
 
