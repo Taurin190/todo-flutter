@@ -8,7 +8,7 @@ class AuthBloc {
 
   bool _isLogin = false;
 
-  User _user = null;
+  User _user = new User();
 
   login(
     String username, String password,
@@ -21,6 +21,7 @@ class AuthBloc {
         password: password
       );
       print(user);
+
       _user = new User();
       _user.email = user.email;
       _user.uid = user.uid;
@@ -53,7 +54,12 @@ class AuthBloc {
       onFailLogin("Password doesn\'t matched");
       return;
     }
-    FirebaseUser user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: username, password: password);
+    FirebaseUser user = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+    print(user);
+    _user.uid = await user.getIdToken();
+    _user.userName = username;
+    _user.email = email;
+    _api.createUser(_user);
   }
 
   bool isLogin() {

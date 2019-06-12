@@ -10,7 +10,7 @@ class ProfilePage extends StatelessWidget {
     return  Column(
         children: <Widget> [
           Container(
-            child: Text(user.displayName),
+            child: Text(user.userName),
           ),
           Container(
             child: Text(user.email),

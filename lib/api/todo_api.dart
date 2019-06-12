@@ -33,23 +33,6 @@ class TodoApi {
     return todoList;
   }
 
-  void listenTodoList(void onChange(List<Todo> list)) {
-    _reference.child("todo").onChildChanged.listen((data){
-      List<Todo> todoList = [];
-      DataSnapshot d = data.snapshot;
-      d.value.forEach((key, value){
-        Todo todo = new Todo({
-          'title': value['title'],
-          'description': value['description'],
-          'createAt': value['createAt']
-        });
-        todo.key = key;
-        todoList.add(todo);
-      });
-      onChange(todoList);
-    });
-  }
-
   Future<void> createTodo(Todo todo) async {
     print("Create TODO");
     var newPostRef = _reference.child("todo").push();

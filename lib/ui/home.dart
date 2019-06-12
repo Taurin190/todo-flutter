@@ -73,7 +73,6 @@ class ToDoHomeState extends State<TodoHome> {
 
   @override
   void initState() {
-    todoBloc.listenTodos();
     super.initState();
   }
   @override

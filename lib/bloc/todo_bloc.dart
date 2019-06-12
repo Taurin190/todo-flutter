@@ -19,14 +19,6 @@ class TodoBloc {
     _todoList.sink.add(_todoList.value + todoList);
   }
 
-  listenTodos() async {
-    print("listen");
-    _api.listenTodoList((list){
-      _todoList.value = [];
-      _todoList.sink.add(_todoList.value + list);
-    });
-  }
-
    createTodo(String title, String description, void afterCreated(data)) async {
     Todo todo = Todo.fromForm(title, description);
     _api.createTodo(todo).then(afterCreated);

@@ -1,6 +1,6 @@
 class User {
   var key;
-  var displayName;
+  var userName;
   var email;
   var emailVerified;
   var photoURL;
