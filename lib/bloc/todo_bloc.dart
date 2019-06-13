@@ -1,6 +1,8 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:todo_flutter/api/todo_api.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
+import 'package:todo_flutter/entity/user.dart';
+import 'package:todo_flutter/bloc/auth_bloc.dart';
 
 class TodoBloc {
   final _api = TodoApi();
@@ -21,7 +23,8 @@ class TodoBloc {
 
    createTodo(String title, String description, void afterCreated(data)) async {
     Todo todo = Todo.fromForm(title, description);
-    _api.createTodo(todo).then(afterCreated);
+    User user = authBloc.getUser();
+    _api.createTodo(todo, user).then(afterCreated);
     fetchTodos();
   }
 

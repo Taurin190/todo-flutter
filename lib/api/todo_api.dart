@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:todo_flutter/entity/todo_hub.dart';
+import 'package:todo_flutter/entity/user.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class TodoApi {
@@ -33,13 +34,14 @@ class TodoApi {
     return todoList;
   }
 
-  Future<void> createTodo(Todo todo) async {
+  Future<void> createTodo(Todo todo, User user) async {
     print("Create TODO");
     var newPostRef = _reference.child("todo").push();
     return newPostRef.set({
       'title': todo.title,
       'description': todo.description,
       'createAt': todo.createdAt, 
+      'uid': user.uid
     });
   }
 
